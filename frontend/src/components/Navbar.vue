@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { useAuthStore } from '../stores/auth'
-import { useRouter } from 'vue-router'
-
-const authStore = useAuthStore()
-const router = useRouter()
-
-const handleLogout = () => {
-  authStore.logout()
-  router.push('/login')
-}
-</script>
 
 <template>
   <nav class="bg-blue-600 text-white">
@@ -34,3 +22,16 @@ const handleLogout = () => {
     </div>
   </nav>
 </template>
+
+<script>
+import { useAuthStore } from '../stores/auth'
+import { useRouter } from 'vue-router'
+
+const authStore = useAuthStore()
+const router = useRouter()
+
+const handleLogout = () => {
+  authStore.logout()
+  router.push('/login')
+}
+</script>
