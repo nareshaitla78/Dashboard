@@ -1,6 +1,5 @@
 <template>
   <div class="relative w-full h-[90vh] bg-cover bg-center" :style="{ backgroundImage: `url(${backgroundImage})` }">
-    <!-- Overlay for better readability -->
     <div class="absolute inset-0   flex items-center px-10 ml-10">
       <div class="max-w-md flex flex-col items-start text-white">
         <h1 class="text-4xl font-bold mb-6">
@@ -10,10 +9,12 @@
           Our products are fully custom-made, built with the latest technologies and cloud-architectures.
         </p>
         <router-link
-          to="/contact"
-          class="inline-block bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-blue-50 transition"
+        to="/contact"
+        class="inline-flex items-center bg-white text-black px-6 py-3 rounded-full hover:bg-blue-50 transition"
         >
-          Get Started »
+        Get Started 
+        <img :src="arrowrightImage" alt="Arrow Right" class="h-3 ml-2" />
+        <img :src="arrowrightImage" alt="Arrow Right" class="h-3 " />
         </router-link>
       </div>
     </div>
@@ -21,12 +22,13 @@
 </template>
 
 <script>
-import backgroundImage from "@/assets/homepagebackgroundimage.svg"; // Ensure correct path
-
+import backgroundImage from "@/assets/homepagebackgroundimage.svg";  
+import arrowrightImage from "@/assets/arrowdownsigntonavigate.svg"; 
 export default {
   data() {
     return {
       backgroundImage,
+        arrowrightImage,
     };
   },
 };
