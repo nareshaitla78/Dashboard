@@ -1,6 +1,6 @@
 
 <template>
-  <nav class="bg-blue-600 text-white">
+  <nav class="bg-blue-500 text-white">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex justify-between h-16 items-center">
         <router-link to="/" class="text-2xl   text-white">Logo</router-link>
@@ -24,14 +24,14 @@
 </template>
 
 <script>
-import { useAuthStore } from '../stores/auth'
+// import { useAuthStore } from '../stores/auth'
 import { useRouter } from 'vue-router'
 
-const authStore = useAuthStore()
-const router = useRouter()
+// const authStore = useAuthStore()
+// const router = useRouter()
 
-const handleLogout = () => {
-  authStore.logout()
-  router.push('/login')
-}
+// const handleLogout = () => {
+//   authStore.logout()
+//   router.push('/login')
+// }
 </script>
