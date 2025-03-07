@@ -1,5 +1,5 @@
 <template>
-   <div class="  bg-white">
+   <div class="min-h-screen  bg-white">
     <Navbar />
     <router-view />
   </div>
@@ -8,6 +8,7 @@
 
 <script>
 import Navbar from "../src/components/Navbar.vue"
+// import router from "../src/router/index.js"
 export default {
   components: {
     Navbar,  
