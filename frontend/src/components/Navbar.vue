@@ -1,6 +1,6 @@
 
 <template>
-  <nav class="bg-blue-500 text-white">
+  <nav class="bg-color text-white">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex justify-between h-16 items-center">
         <router-link to="/" class="text-2xl   text-white">Logo</router-link>
@@ -35,3 +35,9 @@ import { useRouter } from 'vue-router'
 //   router.push('/login')
 // }
 </script>
+
+<style scoped>
+.bg-color {
+  background-color: #0E77FF;
+}
+</style>
