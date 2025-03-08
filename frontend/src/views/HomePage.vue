@@ -36,15 +36,8 @@
           <router-link to="/about" @click="scrollToSection('about')" class="text-white hover:text-blue-100">About</router-link>
           <router-link to="/services"  @click="scrollToSection('services')" class="text-white hover:text-blue-100">Services</router-link>
           <router-link to="/case-studies" @click="scrollToSection('caseStudies')" class="text-white hover:text-blue-100">Case Studies</router-link>
-          <!-- <router-link to="/testimonials" @click="scrollToSection('testimonials')" class="text-white hover:text-blue-100">Testimonials</router-link> -->
+          <!-- <router-link to="/" @click="scrollToSection('testimonials')" class="text-white hover:text-blue-100">Testimonials</router-link> -->
           <router-link to="/contact" @click="scrollToSection('contact')" class="text-white hover:text-blue-100">Contact</router-link>
-          <!-- v-if="!authStore.isAuthenticated" -->
-          <!-- <template > -->
-            <!-- <router-link to="/login" class="bg-white text-black px-6 py-2 rounded-md hover:bg-blue-50">Login</router-link> -->
-          <!-- </template> -->
-          <!-- <template v-else>
-            <button @click="handleLogout" class="bg-white text-blue-600 px-6 py-2 rounded-md hover:bg-blue-50">Logout</button>
-          </template> -->
         </div>
       </div>
     </div>
@@ -102,7 +95,6 @@
   </div>
   </section>
 
-  <!-- Services Section -->
   <section id="services" class="  bg-white">
     <div class="relative flex justify-center items-center h-[90vh]  ">
     <div class="w-[40%] flex flex-col items-start space-y-4">
