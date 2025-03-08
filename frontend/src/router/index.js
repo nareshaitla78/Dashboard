@@ -6,6 +6,9 @@ import Contact from "../views/Contact.vue"
 import Testmonials from "../views/Testimonials.vue"
 import CaseStudies from "../views/CaseStudies.vue"
 import Login from "../views/Login.vue"
+import DashBoard from "../views/DashBoard.vue"
+import { useAuthStore } from '../stores/auth'
+
 const  routes= [
   {
     path: '/',
@@ -47,6 +50,16 @@ const  routes= [
     name: 'login',
     component
     : Login
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component
+    : DashBoard,
+    meta: {
+      requiresAuth: true,
+    },
+    
   }
 
 
