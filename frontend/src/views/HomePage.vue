@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full min-h-screen bg-cover bg-center" :style="{ backgroundImage: `url(${backgroundImage})` }">
+  <div class="relative w-full min-h-screen bg-cover bg-center " :style="{ backgroundImage: `url(${backgroundImage})` }">
     <!-- Top Section -->
     <div class="absolute inset-0 flex items-center px-10 ml-10">
       <div class="max-w-md flex flex-col items-start text-white">
@@ -62,7 +62,7 @@
         <img 
           :src="aboutussideImage" 
           alt="About Icon" 
-          class="absolute top-15 right-[-65px] w-[30vw] max-w-[160px] h-[25vh]"
+          class="absolute top-15  right-0 w-[30vw] max-w-[160px] h-[25vh]"
         />
       </div>
 
@@ -95,7 +95,7 @@
         <img 
           :src="aboutdownImage" 
           alt="Down Arrow" 
-          class="absolute bottom-5 right-[-95px] w-[30vw] max-w-[160px] h-[24vh]"
+          class="absolute bottom-5 right-0 w-[30vw] max-w-[160px] h-[24vh]"
         />
       </div>
     </div>

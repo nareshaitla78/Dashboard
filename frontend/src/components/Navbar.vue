@@ -8,7 +8,7 @@
           <router-link to="/about" class="text-white hover:text-blue-100">About</router-link>
           <router-link to="/services" class="text-white hover:text-blue-100">Services</router-link>
           <router-link to="/case-studies" class="text-white hover:text-blue-100">Case Studies</router-link>
-          <router-link to="/testimonials" class="text-white hover:text-blue-100">Testimonials</router-link>
+          <router-link to="/" class="text-white hover:text-blue-100">Testimonials</router-link>
           <router-link to="/contact" class="text-white hover:text-blue-100">Contact</router-link>
           <!-- v-if="!authStore.isAuthenticated" -->
           <!-- <template > -->

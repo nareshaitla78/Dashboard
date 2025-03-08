@@ -36,12 +36,12 @@ const  routes= [
     component
     : Contact
   },
-  {
-    path: '/testimonials',
-    name: 'testimonials',
-    component
-    : Testmonials
-  },
+  // {
+  //   path: '/testimonials',
+  //   name: 'testimonials',
+  //   component
+  //   : Testmonials
+  // },
   {
     path: '/login',
     name: 'login',
