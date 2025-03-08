@@ -8,6 +8,7 @@ import CaseStudies from "../views/CaseStudies.vue"
 import Login from "../views/Login.vue"
 import DashBoard from "../views/DashBoard.vue"
 import { useAuthStore } from '../stores/auth'
+import NotFound from "../views/NotFound.vue"
 
 const  routes= [
   {
@@ -39,12 +40,6 @@ const  routes= [
     component
     : Contact
   },
-  // {
-  //   path: '/testimonials',
-  //   name: 'testimonials',
-  //   component
-  //   : Testmonials
-  // },
   {
     path: '/login',
     name: 'login',
@@ -60,6 +55,11 @@ const  routes= [
       requiresAuth: true,
     },
     
+  },
+  {
+    path:'/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFound
   }
 
 ]

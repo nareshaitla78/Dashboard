@@ -96,7 +96,7 @@ export default {
         if (success) {
           this.$router.push("/dashboard");  
         } else {
-          this.error = "Invalid credentials";
+          this.error = "Please Enter The Correct Email and Passoword";
         }
       } catch (e) {
         this.error = "An error occurred";
