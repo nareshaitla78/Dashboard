@@ -1,6 +1,6 @@
 
 <template>
-  <nav class="bg-color text-white fixed top-0 left-0 w-full  shadow-md z-[10]">
+  <nav  v-if="!authStore.isAuthenticated" class="bg-color text-white fixed top-0 left-0 w-full  shadow-md z-[10]">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex justify-between h-16 items-center">
         <router-link to="/" class="text-2xl   text-white">Logo</router-link>
@@ -14,9 +14,9 @@
           <template v-if="!authStore.isAuthenticated">
             <router-link to="/login" class="bg-white text-black px-6 py-2 rounded-md hover:bg-blue-50">Login</router-link>
           </template>
-          <template v-else>
+          <!-- <template v-else>
             <button @click="handleLogout" class="bg-white text-blue-600 px-6 py-2 rounded-md hover:bg-blue-50">Logout</button>
-          </template>
+          </template> -->
         </div>
       </div>
     </div>
@@ -34,10 +34,10 @@ export default{
     }
   },
   methods:{
-    handleLogout(){
-      this.authStore.logout()
-      this.$router.push('/login')
-    }
+    // handleLogout(){
+    //   this.authStore.logout()
+    //   this.$router.push('/login')
+    // }
   }
 }
 </script>

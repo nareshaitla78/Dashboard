@@ -1,14 +1,11 @@
 <template>
   <div class="h-screen w-full bg-white ">
-    <!-- Sidebar -->
-    <aside class="fixed left-0 top-0 h-screen w-32 bg-white border-r border-gray-200 flex flex-col items-center py-6 justify-center">
-      <div class="space-y-20">
+    <aside class="fixed left-0 top-0 h-screen w-32 bg-white border-r border-gray-200 flex flex-col items-center py-4 justify-center">
+      <div class="space-y-2">
         <router-link to="/dashboard" class="text-blue-600">
-          <!-- <img :src="metrics" alt="metrics" class="w-6 h-6" /> -->
         </router-link>
         <div class="space-y-8 text-gray-400">
           <div class="p-4 hover:text-blue-600 transition-colors shadow-md border border-gray-200 rounded-md flex flex-col items-center">
-            <!-- <img :src="add" alt="add" class="w-6 h-6" /> -->
           <img :src="metrics" alt="metrics" class="w-6 h-6" />
           <span class="text-xs text-blue-600">Dashboard</span>
            
@@ -35,7 +32,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="ml-32 p-8 ">
+    <main class="ml-32 p-4 ">
       <!-- Header -->
       <div class="flex justify-between items-center mb-8 mt-12 ml-6">
         <div>
