@@ -219,20 +219,7 @@
   </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <!-- <section id="testimonials" class="py-20  bg-white">
-    <h2 class="text-3xl font-bold text-center text-blue-600">Testimonials</h2>
-    <div class="flex justify-center space-x-6 mt-6">
-      <div class="bg-gray-100 p-6 rounded-lg shadow-md w-1/3 text-center">
-        <p class="text-gray-600 italic">"The team exceeded our expectations and delivered an amazing product!"</p>
-        <h4 class="mt-4 font-bold">- John Doe, CEO</h4>
-      </div>
-      <div class="bg-gray-100 p-6 rounded-lg shadow-md w-1/3 text-center">
-        <p class="text-gray-600 italic">"Their dedication and expertise helped us scale our business effectively."</p>
-        <h4 class="mt-4 font-bold">- Sarah Smith, CTO</h4>
-      </div>
-    </div>
-  </section> -->
+
 
   <!-- Contact Us Section -->
   <section id="contact" class="py-20 px-10 bg-white">
@@ -251,17 +238,16 @@
       <div class="w-[75%] bg-white/30 backdrop-blur-md p-8 rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold text-blue-600 mb-6">Send Us a Message</h1>
         <form @submit.prevent="handleClick" class="flex flex-col space-y-4">
-          <input type="email" placeholder="Your Email" class="w-full p-3 border rounded-md" />
-          <input type="text" placeholder="Your Name" class="w-full p-3 border rounded-md" />
-          <input type="tel" placeholder="Your Phone Number" class="w-full p-3 border rounded-md" />
-          <input type="text" placeholder="Subject" class="w-full p-3 border rounded-md" />
-          <textarea placeholder="Your Message" class="w-full p-3 border rounded-md resize-none h-24"></textarea>
+          <input v-model="formData.email" type="email" placeholder="Your Email" class="w-full p-3 border rounded-md" required />
+          <input v-model="formData.name" type="text" placeholder="Your Name" class="w-full p-3 border rounded-md" required />
+          <input v-model="formData.phone" type="tel" placeholder="Your Phone Number" class="w-full p-3 border rounded-md" required />
+          <input v-model="formData.subject" type="text" placeholder="Subject" class="w-full p-3 border rounded-md" required />
+          <textarea v-model="formData.message" placeholder="Your Message" class="w-full p-3 border rounded-md resize-none h-24" ></textarea>
 
           <div class="flex items-center space-x-2">
-            <input type="checkbox" id="privacy" class="w-4 h-4" />
+            <input v-model="formData.agreed" type="checkbox" id="privacy" class="w-4 h-4 cursor-pointer" required />
             <label for="privacy" class="text-gray-600 text-sm">
-              By sending this message, you confirm that you have read and agreed to our 
-              <a href="#" class="text-blue-500 underline">privacy policy</a>.
+              By sending this message, you confirm that you have read and agreed to our privacy policy.
             </label>
           </div>
 
@@ -271,7 +257,7 @@
           >
             Get Started 
             <img :src="getstarted" alt="Arrow Right" class="h-3 ml-2 inline-block" />
-            <img :src="getstarted" alt="Arrow Right" class="h-3 inline-block" />
+            <img :src="getstarted" alt="Arrow Right" class="h-3  inline-block" />
           </button>
         </form>
       </div>
@@ -285,9 +271,9 @@
       <div class="w-1/4">
         <p>Lorem Finaldream rure dolor in reprehenderit in voluptate velit esse cillum dolore e uis nostrud exercitation isi ut aliquip ex ea commodo consequat.</p>
         <div class="flex items-start space-x-2 mt-4">
-          <img :src="facebook" alt="facebook" class=" w-6 h-6" />
-          <img :src="twitter" alt="twitter" class=" w-6 h-6" />
-          <img :src="instagram" alt="instagram" class=" w-6 h-6" />
+          <img :src="facebook" alt="facebook" class=" w-6 h-6 cursor-pointer" />
+          <img :src="twitter" alt="twitter" class=" w-6 h-6 cursor-pointer" />
+          <img :src="instagram" alt="instagram" class=" w-6 h-6 cursor-pointer" />
 
         </div>
       </div>
@@ -362,6 +348,14 @@ import instagram from  "../assets/instagram.svg"
 export default {
   data() {
     return {
+      formData: {
+        email: "",
+        name: "",
+        phone: "",
+        subject: "",
+        message: "",
+        agreed: false,
+      },
       facebook,
       instagram,
       twitter,
@@ -464,6 +458,24 @@ export default {
     this.selectedCategory = this.categories[0];  
   },
   methods: {
+    handleClick() {
+      if (!this.formData.agreed) {
+        alert("You must agree to the privacy policy before submitting.");
+        return;
+      }
+
+      console.log("Form submitted:", this.formData);
+      alert("Form Submitted Successfully!");
+      
+      this.formData = {
+        email: "",
+        name: "",
+        phone: "",
+        subject: "",
+        message: "",
+        agreed: false
+      };
+    },
     scrollToSection(id) {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     },

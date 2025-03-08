@@ -31,20 +31,19 @@
       </button>
     </aside>
 
-    <!-- Main Content -->
     <main class="ml-32 p-4 ">
-      <!-- Header -->
       <div class="flex justify-between items-center mb-8 mt-12 ml-6">
         <div>
           <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
           
-          <p class="text-customHeading">Welcome back,{{ authstore.user.email }} </p>
+          <p class="text-customHeading">Welcome back, Aitla Naresh </p>
         </div>
         <div class="flex items-center space-x-4">
           <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             + Add Unit
           </button>
-          <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+          <img :src="naresh" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3" alt="nani" />
+
         </div>
       </div>
 
@@ -57,15 +56,17 @@
         <div class="bg-white p-6 rounded-lg shadow-sm">
           <h3 class="text-lg font-medium text-customHeading mb-2">PROFITS</h3>
           <div class="flex items-center">
-            <p class="text-2xl font-bold">${{ stats.profits.toFixed(2) }}</p>
-            <span class="ml-2 text-green-500">{{ stats.profitPercentage }}</span>
+            <p class="text-2xl font-bold ">${{ stats.profits.toFixed(2) }}</p>
+            <span class="ml-2 custom-up"></span>
+            <span class="  text-green-500">{{ stats.profitPercentage }}</span>
           </div>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-sm">
           <h3 class="text-lg font-medium text-customHeading mb-2">LOSSES</h3>
           <div class="flex items-center">
             <p class="text-2xl font-bold">${{ stats.losses.toFixed(2) }}</p>
-            <span class="ml-2 text-red-500">{{ stats.lossPercentage }}</span>
+            <span class="ml-2 custom2"></span>
+            <span class=" text-red-500">{{ stats.lossPercentage }}</span>
           </div>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-sm">
@@ -80,28 +81,75 @@
       </div>
 
       <!-- Country Stats -->
-      <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+      <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 shadow-gray-400 mb-8">
         <div class="grid grid-cols-6 gap-6">
           <div v-for="country in countries" :key="country.name" class="text-center">
             <h4 class="text-sm text-customHeading mb-2">{{ country.name }}</h4>
             <p class="text-xl font-bold flex items-center justify-center">
               {{ country.value }}
-              <span :class="country.trend === 'up' ? 'text-green-500' : 'text-red-500'" class="ml-1">
-                {{ country.trend === 'up' ? '↑' : '↓' }}
-              </span>
+              <span
+                :class="country.trend === 'up' ? 'custom-up' : 'custom2'"
+                class="inline-block ml-2"
+              ></span>
             </p>
-            <div class="h-8 mt-2">
-              <!-- Placeholder for chart -->
-              <div class="h-full bg-gray-100 rounded"></div>
-            </div>
+            <div class="h-8 w-full flex items-center justify-between relative">
+            <!-- SVG Line Graph -->
+            <svg class="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none" v-if="country.graph===1" >
+              <polyline
+                points="0,40 20,10 40,30 60,20 80,40 100,10"
+                fill="none"
+                stroke="#0F77FA"
+                stroke-width="2"
+              />
+            </svg>
+            <svg class="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none" v-else-if="country.graph===2" >
+              <polyline
+                points="0,40 20,10 20,30 60,20 70,50 90,50"
+                fill="none"
+                stroke="#0F77FA"
+                stroke-width="2"
+              />
+            </svg>
+             <svg class="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none" v-else-if="country.graph===3" >
+              <polyline
+                points="0,40 20,10 30,30 40,30 70,30 90,30"
+                fill="none"
+                stroke="#FF4B75"
+                stroke-width="2"
+              />
+            </svg>
+            <svg class="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none" v-else-if="country.graph===4" >
+              <polyline
+                points="0,40 20,10 30,20 50,10 70,40 90,10"
+                fill="none"
+                stroke="#0F77FA"
+                stroke-width="2"
+              />
+            </svg>
+            <svg class="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none" v-else-if="country.graph===5" >
+              <polyline
+                points="0,40 20,10 30,20 50,10 70,40 90,10"
+                fill="none"
+                stroke="#00E38C"
+                stroke-width="2"
+              />
+            </svg>
+            <svg class="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none" v-else-if="country.graph===6" >
+              <polyline
+                points="0,40 20,10 30,20 50,10 70,40 90,10"
+                fill="none"
+                stroke="#FF4B75"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
           </div>
         </div>
       </div>
 
-      <!-- Team Members and Comparison -->
       <div class="grid grid-cols-2 gap-6">
         <!-- Team Members -->
-        <div class="bg-white p-6 rounded-lg shadow-sm">
+        <div class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 shadow-gray-400 ">
           <div class="flex justify-between items-center mb-6">
             <h3 class="font-medium">Team Members</h3>
             <button class="text-sm text-blue-600">View All</button>
@@ -110,9 +158,8 @@
             <div v-for="member in teamMembers" :key="member.name" 
                  class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
               <div class="flex items-center">
-                <span class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
-                  {{ member.avatar }}
-                </span>
+                
+                <img :src="member.avatar" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3" alt="nani" />
                 <div>
                   <p class="font-medium">{{ member.name }}</p>
                 </div>
@@ -123,7 +170,7 @@
         </div>
 
         <!-- Comparison -->
-        <div class="bg-white p-6 rounded-lg shadow-sm">
+        <div class="bg-white p-6 rounded-lg shadow-xl border border-gray-200 shadow-gray-400">
           <div class="flex justify-between items-center mb-6">
             <h3 class="font-medium">Comparison</h3>
             <button class="text-sm text-blue-600">View All</button>
@@ -163,6 +210,12 @@ import notification from "@/assets/notification.svg";
 import usa from "@/assets/usa.svg"
 import italy from "@/assets/italy.svg"
 import spain from "@/assets/spain.svg"
+import naresh from "@/assets/naresh.jpeg"
+import image2 from  "@/assets/image2.jpeg"
+import image3 from  "@/assets/image3.jpeg"
+import image4 from  "@/assets/image4.jpeg"
+
+
 // const authstore = useAuthStore();
 import { useRouter } from "vue-router";
 
@@ -171,9 +224,13 @@ export default {
     return {
       // authstore: authstore,
         bitcoin,
+        naresh,
         usa,
         italy,
         spain,
+        image2,
+        image3,
+        image4,
         analytics,
         notification,
         logoutImage,
@@ -192,18 +249,18 @@ export default {
         lossPercentage: "-56%",
       },
       countries: [
-        { name: "Italy", value: 475, trend: "up" },
-        { name: "United States", value: 431, trend: "up" },
-        { name: "Canada", value: 174, trend: "down" },
-        { name: "Spain", value: 475, trend: "up" },
-        { name: "Japan", value: 134, trend: "up" },
-        { name: "South Africa", value: 471, trend: "down" },
+        { name: "Italy", value: 475, trend: "up",graph:1 },
+        { name: "United States", value: 431, trend: "up",graph:2 },
+        { name: "Canada", value: 174, trend: "down",graph:3 },
+        { name: "Spain", value: 475, trend: "up",graph:4 },
+        { name: "Japan", value: 134, trend: "up",graph:5 },
+        { name: "South Africa", value: 471, trend: "down",graph:6 },
       ],
       teamMembers: [
-        { name: "Andrew Johnston", role: "Top Trader", avatar: "👨‍💼" },
-        { name: "Anna Atkinsons", role: "Manager", avatar: "👩‍💼" },
-        { name: "Mark Atkinsons", role: "Top Trader", avatar: "👨‍💼" },
-        { name: "Johanna Tairons", role: "Manager", avatar: "👩‍💼" },
+        { name: "Aitla Naresh", role: "Top Trader", avatar: naresh },
+        { name: "Anna Atkinsons", role: "Manager", avatar: image2 },
+        { name: "Mark Atkinsons", role: "Top Trader", avatar: image3 },
+        { name: "Jain", role: "Manager", avatar: image4 },
       ],
       comparison: [
         { country: "United States", percentage: 93,countryicon:usa },
@@ -220,3 +277,34 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.custom {
+  top: 505px;
+left: 448px;
+width: 17px;
+height: 9px;
+background: #00E38C 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+.custom2 {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #FF4B75;  
+  transform: scale(0.8);  
+  opacity: 1;
+}
+.custom-up {
+  width: 0;
+  height: 0;
+
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #00E38C;  
+  transform: scale(0.8); 
+  opacity: 1;
+}
+
+</style>

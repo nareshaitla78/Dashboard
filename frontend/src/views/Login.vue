@@ -42,11 +42,10 @@
 
           <div v-if="error" class="text-red-500 text-sm text-center">{{ error }}</div>
 
-          <!-- Login Button -->
           <button
             type="submit"
             :disabled="loading"
-            class="w-30   text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-full   transition border-2 border-blue-500 flex items-center justify-center"
+            class="w-30   text-blue-500 hover:bg-blue-50 px-6 py-2 rounded-full   transition border-2 border-blue-500 flex items-center justify-center"
           >
             <span v-if="loading">Logging in...</span>
             <span v-else class="inline-flex items-center">
