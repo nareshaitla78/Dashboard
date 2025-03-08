@@ -16,7 +16,7 @@
           class="px-4 py-2 rounded-full transition"
           :class="{
             'bg-blue-600 text-white': activeService.name === service.name,
-            'bg-blue-200 text-black hover:bg-blue-500 hover:text-white': activeService.name !== service.name
+            'bg-CustomLightBlue text-CustomDarkBule hover:bg-blue-500 hover:text-white font-semi-bold': activeService.name !== service.name
           }"
         >
           {{ service.name }}
