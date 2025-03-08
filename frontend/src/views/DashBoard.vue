@@ -29,8 +29,8 @@
           </div>
         </div>
       </div>
-      <button @click="logoutpage" class="mt-auto p-2 text-gray-400 hover:text-blue-600 transition-colors">
-        <img :src="logout" alt="logout" class="w-6 h-6" />
+      <button @click="logout" class="mt-auto p-2 text-gray-400 hover:text-blue-600 transition-colors">
+        <img :src="logoutImage" alt="logout" class="w-6 h-6" />
       </button>
     </aside>
 
@@ -40,8 +40,8 @@
       <div class="flex justify-between items-center mb-8 mt-12 ml-6">
         <div>
           <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <!-- {{ authStore.user?.email }} -->
-          <p class="text-customHeading">Welcome back,Aitla Naresh </p>
+          
+          <p class="text-customHeading">Welcome back,{{ authstore.user.email }} </p>
         </div>
         <div class="flex items-center space-x-4">
           <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
@@ -160,32 +160,33 @@ import currencydollar from "@/assets/currencydollar.svg";
 import currencyyen from "@/assets/currencyyen.svg";
 import add from "@/assets/add.svg";
 import metrics from "@/assets/metrics.svg";
-import logout from "@/assets/logout.svg";
+import logoutImage from "@/assets/logout.svg";
 import analytics from "@/assets/analytics.svg";
 import notification from "@/assets/notification.svg";
 import usa from "@/assets/usa.svg"
 import italy from "@/assets/italy.svg"
 import spain from "@/assets/spain.svg"
-
+// const authstore = useAuthStore();
 import { useRouter } from "vue-router";
 
 export default {
   data() {
     return {
+      // authstore: authstore,
         bitcoin,
         usa,
         italy,
         spain,
         analytics,
         notification,
-        logout,
+        logoutImage,
         currencyyen,
         add,
         currencydollar,
         currencyeuro,
         metrics,
         currencyexchange,
-      authStore: useAuthStore(),
+      authstore: useAuthStore(),
       stats: {
         balance: 5900.0,
         profits: 950.0,
@@ -215,9 +216,9 @@ export default {
     };
   },
   methods: {
-    logoutpage() {
+    logout() {
         this.$router.push("/")
-    //   this.authStore.logout();
+      this.authstore.logout();
     },
   },
 };

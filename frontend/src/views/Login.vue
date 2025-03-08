@@ -63,9 +63,9 @@
 
 <script>
 import { useRouter } from "vue-router";
-import aboutusimage from "@/assets/aboutus.svg";
-import arrowrightImage from "@/assets/arrowdownsigntonavigateblue.svg";
-
+import aboutusimage from "../assets/aboutus.svg";
+import arrowrightImage from "../assets/arrowdownsigntonavigateblue.svg";
+import { useAuthStore } from "../stores/auth";
 export default {
   data() {
     return {
@@ -75,6 +75,7 @@ export default {
       loading: false,  
       aboutusimage,
       arrowrightImage,
+      authstore: useAuthStore(),
     };
   },
   methods: {
@@ -90,7 +91,7 @@ export default {
       this.error = "";
 
       try {
-        const success = this.email === "nareshaitla1122@gmail.com" && this.password === "naresh@123";
+        const success = await this.authstore.login(email.value, password.value)
 
         if (success) {
           this.$router.push("/dashboard");  
@@ -99,6 +100,7 @@ export default {
         }
       } catch (e) {
         this.error = "An error occurred";
+        console.log(e,"error........");
       } finally {
         this.loading = false;
       }

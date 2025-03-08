@@ -10,13 +10,13 @@
           <router-link to="/case-studies" class="text-white hover:text-blue-100">Case Studies</router-link>
           <router-link to="/" class="text-white hover:text-blue-100">Testimonials</router-link>
           <router-link to="/contact" class="text-white hover:text-blue-100">Contact</router-link>
-          <!-- v-if="!authStore.isAuthenticated" -->
-          <!-- <template > -->
+          
+          <template v-if="!authStore.isAuthenticated">
             <router-link to="/login" class="bg-white text-black px-6 py-2 rounded-md hover:bg-blue-50">Login</router-link>
-          <!-- </template> -->
-          <!-- <template v-else>
+          </template>
+          <template v-else>
             <button @click="handleLogout" class="bg-white text-blue-600 px-6 py-2 rounded-md hover:bg-blue-50">Logout</button>
-          </template> -->
+          </template>
         </div>
       </div>
     </div>
@@ -24,16 +24,22 @@
 </template>
 
 <script>
-// import { useAuthStore } from '../stores/auth'
+import { useAuthStore } from '../stores/auth'
 import { useRouter } from 'vue-router'
 
-// const authStore = useAuthStore()
-// const router = useRouter()
-
-// const handleLogout = () => {
-//   authStore.logout()
-//   router.push('/login')
-// }
+export default{
+  data(){
+    return{
+      authStore: useAuthStore(),
+    }
+  },
+  methods:{
+    handleLogout(){
+      this.authStore.logout()
+      this.$router.push('/login')
+    }
+  }
+}
 </script>
 
 <style scoped>
