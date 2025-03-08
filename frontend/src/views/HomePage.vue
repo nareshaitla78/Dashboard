@@ -10,11 +10,12 @@
           Our products are fully custom-made, built with the latest technologies and cloud-architectures.
         </p>
         <router-link
-          to="#about"
+          to="/about"
           class="inline-flex items-center bg-white text-black px-6 py-3 rounded-full hover:bg-blue-50 transition"
         >
           Get Started
           <img :src="arrowrightImage" alt="Arrow Right" class="h-3 ml-2" />
+          <img :src="arrowrightImage" alt="Arrow Right" class="h-3" />
         </router-link>
       </div>
     </div>
@@ -281,14 +282,17 @@
   <!-- Footer -->
   <footer class="bg-CustomDarkBule text-white py-10">
     <div class="max-w-7xl mx-auto px-6 flex justify-between">
-      <div class="w-1/3">
-        <h2 class="text-xl font-semibold mb-4">Our Address</h2>
-        <p>123 Tech Street, Hyderabad, India</p>
-        <p>Email: info@example.com</p>
-        <p>Phone: +91 98765 43210</p>
+      <div class="w-1/4">
+        <p>Lorem Finaldream rure dolor in reprehenderit in voluptate velit esse cillum dolore e uis nostrud exercitation isi ut aliquip ex ea commodo consequat.</p>
+        <div class="flex items-start space-x-2 mt-4">
+          <img :src="facebook" alt="facebook" class=" w-6 h-6" />
+          <img :src="twitter" alt="twitter" class=" w-6 h-6" />
+          <img :src="instagram" alt="instagram" class=" w-6 h-6" />
+
+        </div>
       </div>
 
-      <div class="w-1/3">
+      <div class="w-1/4">
         <h2 class="text-xl font-semibold mb-4">Our Services</h2>
         <ul class="space-y-2">
           <li><a href="#" class="hover:text-blue-400">Web Development</a></li>
@@ -297,14 +301,32 @@
           <li><a href="#" class="hover:text-blue-400">Branding</a></li>
         </ul>
       </div>
+      <div class="w-1/4">
+        <h2 class="text-xl font-semibold mb-4">Our Links</h2>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-blue-400">Terms & Condition  </a></li>
+          <li><a href="#" class="hover:text-blue-400"> Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-blue-400">Imprint</a></li>
+          <li><a href="#" class="hover:text-blue-400">Legal</a></li>
+        </ul>
+      </div>
 
-      <div class="w-1/3">
+      <div class="w-1/4">
         <h2 class="text-xl font-semibold mb-4">Contact</h2>
         <ul class="space-y-2">
-          <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-blue-400">Terms & Conditions</a></li>
-          <li><a href="#" class="hover:text-blue-400">Support</a></li>
-        </ul>
+            <li   class="flex items-start space-x-2">
+              <img :src="location" alt="Location" class="w-5 h-5 mt-1" />
+              <span class="text-black/90 text-white">Al. Dummyodl 124/23 floor 123 Banswara Street, 02-577 India.</span>
+            </li>
+            <li   class="flex items-start space-x-2">
+              <img :src="phone" alt="Phone" class="w-5 h-5 mt-1" />
+              <span class="text-black/90 text-white">00 1800 245 453</span>
+            </li>
+            <li   class="flex items-start space-x-2">
+              <img :src="email" alt="Email" class="w-5 h-5 mt-1" />
+              <span class="text-black/90 text-white">nareshaitla1122@gmail.com</span>
+            </li>
+          </ul>
       </div>
     </div>
   </footer>
@@ -331,10 +353,21 @@ import contactus from "@/assets/contactus.svg";
 import PersonImage from "@/assets/PersonImage.svg";
 import getstarted from "@/assets/getstarted.svg";
 import backgroundImagecontact from "@/assets/backgroundImagecontact.svg";
-
+import location from "@/assets/location.svg";
+import email from "@/assets/email.svg";
+import phone from "@/assets/phone.svg"
+import facebook from "../assets/facebook.svg";
+import twitter from "../assets/twitter.svg";
+import instagram from  "../assets/instagram.svg"
 export default {
   data() {
     return {
+      facebook,
+      instagram,
+      twitter,
+      location,
+      email,
+      phone,
       backgroundImage,
       contactus,
       PersonImage,
